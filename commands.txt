@@ -1,0 +1,8 @@
+#initialize
+python3 -m venv .venv
+
+# activate virtual env
+source .venv/bin/activate
+
+#deactivate 
+deactivate

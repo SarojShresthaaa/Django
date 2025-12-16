@@ -5,7 +5,12 @@ from django.http import HttpResponse
 def first(request):
    return HttpResponse("<h1>Welcome</h1>")
 def home(request):
-   return HttpResponse("<h1>This is the Home Page</h1>")
+   context = {
+       "title": "Homepage",
+       "first_line": "Welcome to the page",
+       "second_line": "This is home page rendering from function"
+   }
+   return render(request, 'home.html', context)
 def contact(request):
     return HttpResponse("<h1>This is the Contact Page</h1>")
 def about_us(request):

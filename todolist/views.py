@@ -56,19 +56,12 @@ def task(request):
     }
     return render(request, "tasks.html", context)
 
-def task_update(request, id):
-    if request.method == "POST":
-        title1 = request.POST.get('title')
-        description1 = request.POST.get('description')
-        context = {
-            "task": task
-         }
-    task = Todo.objects.get(id=id)
-    task.title = title1
-    task.description = description1
-    task.save()
-      
-    return render(request,'update.html',context)
+def task_create(request):
+    title = request.POST.get('title')
+    description = request.POST.get('Description')
+    print(title)
+    print(description)
+    return render(request,'create.html')
 
 
 

@@ -6,5 +6,5 @@ urlpatterns = [
    path('home/', home),
    path('contact/', contact),
    path('task/', task),
-   path('task/update/', task_update)
+   path('task/create/', task_create)
 ]

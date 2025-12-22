@@ -15,6 +15,7 @@
       <th scope="col">Title</th>
       <th scope="col">Description</th>
       <th scope="col">Status</th>
+      <th scope="col">Actions</th>
     </tr>
   </thead>
 
@@ -35,7 +36,12 @@
           </span>
           {% endif %}
 </td>
-    </tr>
+  <td>
+      <a href="{{i.id}}/edit/" type="button" class="btn btn-primary">Edit</button>
+      <a href="{{i.id}}" type="button" class="btn btn-success">Mark</button>
+      <a href="{{i.id}}/delete/" type="button" class="btn btn-danger">Delete</button>
+  </td>
+</tr>
     {% endfor %}
   </tbody>
 </table>

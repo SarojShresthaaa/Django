@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Todo
 
@@ -57,12 +57,43 @@ def task(request):
     return render(request, "tasks.html", context)
 
 def task_create(request):
-    title = request.POST.get('title')
-    description = request.POST.get('Description')
-    print(title)
-    print(description)
+    if request.method == "POST":
+        title1 = request.POST.get('title')
+        description1 = request.POST.get('Description')
+        if title1 == "" or description1 == "":
+            context = {
+                "error": "Both fields are required"
+            }
+            return render(request, 'create.html',context)
+        Todo.objects.create(title = title1, description = description1)
+        return redirect('/task/')
     return render(request,'create.html')
 
+def task_edit(request, id):
+    task = Todo.objects.get(id = id)
+    context = {
+        "task": task
+    }
+    if request.method == "POST":
+        title1 = request.POST.get('title')
+        description1 = request.POST.get('Description')
+        task.title = title1
+        task.description = description1
+        task.save()
+        return redirect('/task/')
+    return render(request, 'edit.html', context)
+
+def task_mark(request,id):
+   task = Todo.objects.get(id = id)
+   task.status = True
+   task.save()
+   return redirect('/task/')
+    
+
+def task_delete(request, id):
+    task = Todo.objects.get(id = id)
+    task.delete()
+    return redirect('/task/')
 
 
 

@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}Todo Create{% endblock title %}
+{% block title %}Todo Update{% endblock title %}
 {% block body %}
 <div class="container">
   {% if error %}
@@ -11,15 +11,15 @@
    {% csrf_token %}
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Title</label>
-    <input type="text" name="title" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <input type="text" name="title" value= {{task.title}} class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
   </div>
 
   <div class="form-floating mb-3">
-    <textarea class="form-control" name="Description" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+    <textarea class="form-control" name="Description" id="floatingTextarea">{{task.description}}</textarea>
     <label for="floatingTextarea">Description</label>
   </div>
 
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-primary">Update</button>
 </form>
 </div>
 {% endblock body %}
